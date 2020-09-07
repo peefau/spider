@@ -11,14 +11,14 @@ class GwasMrcieuSpider(scrapy.Spider):
     start_urls = [url + str(offset)]
 
     def parse(self, response):
-        item = GwasItem()
         items = response.xpath(
-            "//div[@class='table-container']/table[@class='table table-striped']/tbody/tr[*]")
+            "//div[@class='table-container']/table[@class='table table-striped']/tbody/tr[.]")
         # print(items)
-        i = 0
         for it in items:
             # print(it)
             # print(type(it))
+            #创建item类
+            item = GwasItem()
             # 点. 表示在当前Selector节点下查找数据，而不是从根目录下查找
             item['gwasId'] = it.xpath(".//td[1]/a/text()").extract_first()
             item['year'] = it.xpath(".//td[2]/text()").extract_first()
@@ -26,7 +26,6 @@ class GwasMrcieuSpider(scrapy.Spider):
             item['consortium'] = it.xpath(".//td[4]/text()").extract_first()
             item['sampleSize'] = it.xpath(".//td[5]/text()").extract_first()
             item['numbersOfSNPs'] = it.xpath(".//td[6]/text()").extract_first()
-            i = i + 1
             # print(item)
             yield item
 
