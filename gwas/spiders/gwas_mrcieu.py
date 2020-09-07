@@ -29,7 +29,7 @@ class GwasMrcieuSpider(scrapy.Spider):
             # print(item)
             yield item
 
-        if self.offset <= 6904:
+        if self.offset < 6904:
             self.offset += 1
             yield scrapy.Request(self.url+str(self.offset), callback=self.parse)
 
