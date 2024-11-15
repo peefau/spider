@@ -94,4 +94,4 @@ MYSQL_HOST = '172.16.10.153'
 MYSQL_PORT = 3306
 MYSQL_DBNAME = 'spider'
 MYSQL_USER = 'root'
-MYSQL_PASSWD = 'Sddx2019Aa?'
+MYSQL_PASSWD = 'root' # 改为自己的密码
